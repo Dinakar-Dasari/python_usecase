@@ -21,4 +21,5 @@
   + **`tag:AutoStop`**: Look for instances that have a tag with the key `AutoStop`
   + **`['true']`**: Only match instances where the `AutoStop` tag value equals `'true'`
 + if there are multiple Values then it's an OR condition like Environment can be dev/test/staging
++ The response includes a Reservations list, where each reservation contains an Instances list with instance details.
 ---  
