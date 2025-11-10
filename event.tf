@@ -4,6 +4,11 @@ resource "aws_cloudwatch_event_rule" "ec2_auto_stop_rule" {
   schedule_expression   =  "cron(18 15 ? * MON-FRI *)"
 }
 
+  # why not "cron(18 15 * * MON-FRI *)"
+  # It means every day of the month also saying only MON-FRI, so it's kinda conflicting
+  # "?" --> No specific value — ignore this field.
+  # it means, Ignore Day-of-Month (because it’s ?) & Apply only Day-of-Week = MON-FRI
+
 resource "aws_cloudwatch_event_target" "ec2_auto_stop_target" {
   rule      = aws_cloudwatch_event_rule.ec2_auto_stop_rule.name
   target_id = "EC2AutoStopLambda"
