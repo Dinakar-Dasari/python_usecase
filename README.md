@@ -23,3 +23,17 @@
 + if there are multiple Values then it's an OR condition like Environment can be dev/test/staging
 + The response includes a Reservations list, where each reservation contains an Instances list with instance details.
 ---  
+- **We need to create an IAM role and attach to the lambda to access the ec2 & cloudwatch logs**
+- But for the eventbridge to access the aws lambda it doesn't need an IAM role. Instead it needs "resource based policy"
+  - EventBridge itself doesn't need a role because:
+    - Authorization happens via a resource-based policy on the target (the Lambda function), not on the invoker (EventBridge).
+    - When you configure an EventBridge rule with a Lambda target, AWS automatically adds a permission to the Lambda function's resource-based policy. This policy grants EventBridge (as a trusted AWS service) the right to invoke that specific function.
+---      
+
+
+
+ 
+
+
+
+ 
